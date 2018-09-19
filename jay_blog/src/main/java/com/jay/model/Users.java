@@ -19,10 +19,12 @@ public class Users extends Model<Users> {
     /**
      * 用户名
      */
+    @TableField("userName")
     private String userName;
     /**
      * 密码
      */
+    @TableField("passWord")
     private String passWord;
     @TableField("user_sex")
     private String userSex;

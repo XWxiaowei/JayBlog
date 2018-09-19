@@ -1,4 +1,4 @@
-package com.jay.Users.service;
+package com.jay.users.service;
 
 import com.jay.model.Users;
 import com.baomidou.mybatisplus.service.IService;
