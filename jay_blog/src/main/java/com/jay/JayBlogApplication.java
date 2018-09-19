@@ -1,4 +1,4 @@
-package com.jay.jay_blog;
+package com.jay;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
