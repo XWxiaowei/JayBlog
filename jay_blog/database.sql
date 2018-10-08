@@ -1,4 +1,4 @@
-CREATE DATABASE jay_blog;
+USE jay_blog;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
@@ -29,24 +29,24 @@ COMMIT;
 
 DROP TABLE IF EXISTS mto_comments;
 CREATE TABLE mto_comments(
-	id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
-	author_id BIGINT(20) DEFAULT NULL COMMENT '评论人id',
-	content VARCHAR(255) DEFAULT NULL COMMENT '评论内容',
-	created datetime DEFAULT NULL  COMMENT '评论时间',
-	pid BIGINT(20) NOT NULL COMMENT '父评论ID',
-	status INT(11) NOT NULL COMMENT '评论状态',
-	to_id BIGINT(20) NOT NULL COMMENT '所属内容ID'
-	PRIMARY KEY(`id`)
+  id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  author_id BIGINT(20) DEFAULT NULL COMMENT '评论人id',
+  content VARCHAR(255) DEFAULT NULL COMMENT '评论内容',
+  created datetime DEFAULT NULL  COMMENT '评论时间',
+  pid BIGINT(20) NOT NULL COMMENT '父评论ID',
+  status INT(11) NOT NULL COMMENT '评论状态',
+  to_id BIGINT(20) NOT NULL COMMENT '所属内容ID',
+  PRIMARY KEY(`id`)
 )ENGINE=INNODB DEFAULT charset=utf8 COMMENT '评论表';
 
 DROP TABLE IF EXISTS mto_config;
 CREATE TABLE mto_config(
-	id BIGINT(20) NOT NULL auto_increment COMMENT '主键id',
-	key_ VARCHAR(255) DEFAULT NULL COMMENT '唯一关键字',
-	type VARCHAR(255) DEFAULT NULL COMMENT '配置类型',
-	value VARCHAR(255) DEFAULT NULL COMMENT '配置值',
-	PRIMARY KEY(id),
-	UNIQUE KEY key_index(`key_`)
+  id BIGINT(20) NOT NULL auto_increment COMMENT '主键id',
+  key_ VARCHAR(255) DEFAULT NULL COMMENT '唯一关键字',
+  type VARCHAR(255) DEFAULT NULL COMMENT '配置类型',
+  value VARCHAR(255) DEFAULT NULL COMMENT '配置值',
+  PRIMARY KEY(id),
+  UNIQUE KEY key_index(`key_`)
 )ENGINE=INNODB AUTO_INCREMENT=17 DEFAULT CHARSET=UTF8 COMMENT '系统配置表';
 BEGIN;
 INSERT INTO `mto_config` VALUES (1, 'site_name', '0', 'Mtons');
@@ -65,22 +65,22 @@ INSERT INTO `mto_config` VALUES (16, 'weibo_client_sercret', '0', '');
 COMMIT;
 DROP TABLE IF EXISTS mto_favors;
 CREATE TABLE mto_favors(
-   id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
-   created datetime DEFAULT NULL COMMENT '创建时间',
-   own_id BIGINT(20) DEFAULT NULL COMMENT '所属用户',
-   post_id BIGINT(20) DEFAULT NULL COMMENT '内容ID',
-   PRIMARY KEY(`id`)
+  id BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  created datetime DEFAULT NULL COMMENT '创建时间',
+  own_id BIGINT(20) DEFAULT NULL COMMENT '所属用户',
+  post_id BIGINT(20) DEFAULT NULL COMMENT '内容ID',
+  PRIMARY KEY(`id`)
 )ENGINE=INNODB DEFAULT charset=utf8 COMMENT '喜欢/收藏表';
 
 DROP TABLE IF EXISTS mto_feeds;
 CREATE TABLE mto_feeds(
-	id BIGINT(20) NOT NULL AUTO_INCREAMENT,
-	author_id BIGINT(20) DEFAULT NULL COMMENT '作者',
-	created datetime DEFAULT NULL COMMENT '创建时间',
-	own_id BIGINT(20) DEFAULT NULL COMMENT '所属用户id',
-	post_id BIGINT(20) DEFAULT NULL COMMENT '目标id',
-	type INT(11) NOT NULL COMMENT '',
-	PRIMARY KEY(id)
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  author_id BIGINT(20) DEFAULT NULL COMMENT '作者',
+  created datetime DEFAULT NULL COMMENT '创建时间',
+  own_id BIGINT(20) DEFAULT NULL COMMENT '所属用户id',
+  post_id BIGINT(20) DEFAULT NULL COMMENT '目标id',
+  type INT(11) NOT NULL COMMENT '',
+  PRIMARY KEY(id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT '动态表';
 
 DROP TABLE IF EXISTS mto_follows;
@@ -89,11 +89,9 @@ CREATE TABLE mto_follows(
   created datetime DEFAULT NULL COMMENT '创建时间',
   follow_id BIGINT(20) NOT NULL COMMENT '关注用户Id',
   user_id BIGINT(20) NOT NULL COMMENT '所属用户Id',
-PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`),
   KEY `FKlbcc3hcj1cikyow8cvlk1eupe` (`follow_id`),
-  KEY `FKso66aluvvri4r5a5x3lh31t8s` (`user_id`),
-  CONSTRAINT `FKlbcc3hcj1cikyow8cvlk1eupe` FOREIGN KEY (`follow_id`) REFERENCES `mto_users` (`id`),
-  CONSTRAINT `FKso66aluvvri4r5a5x3lh31t8s` FOREIGN KEY (`user_id`) REFERENCES `mto_users` (`id`)
+  KEY `FKso66aluvvri4r5a5x3lh31t8s` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '我的关注';
 DROP TABLE IF EXISTS mto_notify;
 CREATE TABLE mto_notify(
@@ -103,37 +101,38 @@ CREATE TABLE mto_notify(
   from_id BIGINT(20) DEFAULT NULL COMMENT '从',
   own_id BIGINT(20) DEFAULT NULL COMMENT '所属用户id',
   status INT(11) NOT NULL COMMENT '阅读状态',
-  post_id BIGINT(20) NOT NULL COMMENT '关联文章id'
+  post_id BIGINT(20) NOT NULL COMMENT '关联文章id',
+  PRIMARY KEY(`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT '通知表';
 DROP TABLE IF EXISTS mto_posts;
 CREATE TABLE mto_posts(
-   id BIGINT(20) NOT NULL AUTO_INCREMENT,
-   author_id INT(11) DEFAULT NULL COMMENT '作者id',
-   channel_id INT(11) DEFAULT NULL COMMENT '分组/模块id',
-   comments INT(11) NOT NULL COMMENT '评论数',
-   created datetime DEFAULT NULL COMMENT '创建时间',
-   favors INT(11) NOT NULL COMMENT '喜欢数',
-   featured INT(11) NOT NULL COMMENT '推荐状态',
-   status INT(11) NOT NULL COMMENT '文章状态',
-   summary VARCHAR(255) DEFAULT NULL COMMENT '摘要',
-   tags VARCHAR(255) DEFAULT NULL COMMENT '标签，多个用逗号隔开',
-	thumbnail VARCHAR(64) DEFAULT NULL COMMENT '预览图',
-	title VARCHAR(64) DEFAULT NULL COMMENT '标题',
-	views INT(11) NOT NULL COMMENT '阅读数',
-	weight INT(11) NOT NULL COMMENT '置顶状态',
-	PRIMARY KEY(`id`)
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  author_id INT(11) DEFAULT NULL COMMENT '作者id',
+  channel_id INT(11) DEFAULT NULL COMMENT '分组/模块id',
+  comments INT(11) NOT NULL COMMENT '评论数',
+  created datetime DEFAULT NULL COMMENT '创建时间',
+  favors INT(11) NOT NULL COMMENT '喜欢数',
+  featured INT(11) NOT NULL COMMENT '推荐状态',
+  status INT(11) NOT NULL COMMENT '文章状态',
+  summary VARCHAR(255) DEFAULT NULL COMMENT '摘要',
+  tags VARCHAR(255) DEFAULT NULL COMMENT '标签，多个用逗号隔开',
+  thumbnail VARCHAR(64) DEFAULT NULL COMMENT '预览图',
+  title VARCHAR(64) DEFAULT NULL COMMENT '标题',
+  views INT(11) NOT NULL COMMENT '阅读数',
+  weight INT(11) NOT NULL COMMENT '置顶状态',
+  PRIMARY KEY(`id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT '内容表';
 DROP TABLE IF EXISTS mto_posts_attribute;
 CREATE TABLE mto_posts_attribute(
-    id BIGINT(20) NOT NULL,
-	content LONGTEXT COMMENT '内容',
-)ENGINE=INNODB DEFAULT charset=utf8;
+  id BIGINT(20) NOT NULL,
+  content LONGTEXT COMMENT '内容'
+)ENGINE=InnoDB DEFAULT charset=utf8;
 
 DROP TABLE IF EXISTS mto_users;
 CREATE TABLE mto_users(
   id BIGINT(20) NOT NULL AUTO_INCREMENT,
   created VARCHAR(128) DEFAULT NULL COMMENT '注册时间',
-  email VARCHAR(128) DEFAULT NULL COMMENT '邮箱'，
+  email VARCHAR(128) DEFAULT NULL COMMENT '邮箱',
   last_login datetime DEFAULT NULL COMMENT '最近登录',
   mobile VARCHAR(11) DEFAULT NULL COMMENT '手机号',
   password VARCHAR(32) DEFAULT NULL COMMENT '密码',
@@ -161,29 +160,29 @@ COMMIT;
 
 DROP TABLE if EXISTS mto_users_open_oauth;
 CREATE TABLE mto_users_open_oauth(
-	id BIGINT(20) NOT NULL AUTO_INCREMENT,
-    access_token VARCHAR(255) DEFAULT NULL  COMMENT '访问令牌',
-	expire_in VARCHAR(255) DEFAULT NULL COMMENT '',
-	oauth_code VARCHAR(255) DEFAULT NULL COMMENT '第三方返回的code',
-	oauth_type VARCHAR(255) DEFAULT NULL COMMENT '认证类型：QQ、新浪',
-	oauth_user_id VARCHAR(255) DEFAULT NULL COMMENT '对应第三方用户ID',
-	refresh_token VARCHAR(255) DEFAULT NULL COMMENT '',
-	user_id BIGINT(20) DEFAULT NULL COMMENT '系统中的用户ID',
-	PRIMARY KEY(id)
- )ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT '第三方开发授权登录';
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  access_token VARCHAR(255) DEFAULT NULL  COMMENT '访问令牌',
+  expire_in VARCHAR(255) DEFAULT NULL COMMENT '',
+  oauth_code VARCHAR(255) DEFAULT NULL COMMENT '第三方返回的code',
+  oauth_type VARCHAR(255) DEFAULT NULL COMMENT '认证类型：QQ、新浪',
+  oauth_user_id VARCHAR(255) DEFAULT NULL COMMENT '对应第三方用户ID',
+  refresh_token VARCHAR(255) DEFAULT NULL COMMENT '',
+  user_id BIGINT(20) DEFAULT NULL COMMENT '系统中的用户ID',
+  PRIMARY KEY(id)
+)ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT '第三方开发授权登录';
 DROP TABLE IF EXISTS mto_verify;
 CREATE TABLE mto_verify(
-	id BIGINT(20) NOT NULL AUTO_INCREMENT,
-	code VARCHAR(60) NOT NULL COMMENT '验证码',
-	created datetime NOT NULL COMMENT '创建时间',
-	expired datetime NOT NULL COMMENT '过期时间',
-	status INT(11) DEFAULT NULL COMMENT '状态  0正常，1关闭',
-	target VARCHAR(96) DEFAULT NULL COMMENT '目标：邮箱',
-	token  VARCHAR(255) DEFAULT NULL COMMENT '',
-	type INT(11) DEFAULT NULL COMMENT '验证类型：注册验证，找回密码验证',
-	user_id BIGINT(20) DEFAULT NULL COMMENT '用户id',
-	PRIMARY KEY(id),
-	UNIQUE KEY `UK_m7p0b526c4xlgjn787t22om2g` (`user_id`)
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  code VARCHAR(60) NOT NULL COMMENT '验证码',
+  created datetime NOT NULL COMMENT '创建时间',
+  expired datetime NOT NULL COMMENT '过期时间',
+  status INT(11) DEFAULT NULL COMMENT '状态  0正常，1关闭',
+  target VARCHAR(96) DEFAULT NULL COMMENT '目标：邮箱',
+  token  VARCHAR(255) DEFAULT NULL COMMENT '',
+  type INT(11) DEFAULT NULL COMMENT '验证类型：注册验证，找回密码验证',
+  user_id BIGINT(20) DEFAULT NULL COMMENT '用户id',
+  PRIMARY KEY(id),
+  UNIQUE KEY `UK_m7p0b526c4xlgjn787t22om2g` (`user_id`)
 )ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT '验证码表';
 DROP TABLE IF EXISTS shiro_permission;
 CREATE TABLE shiro_permission(
@@ -226,7 +225,7 @@ CREATE TABLE shiro_role(
   description VARCHAR(255) DEFAULT NULL COMMENT '角色描述',
   name VARCHAR(255) NOT NULL COMMENT '角色名称',
   status INT(11) NOT NULL COMMENT '角色状态',
- PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT '角色表';
 
 DROP TABLE IF EXISTS shiro_role_permission;
