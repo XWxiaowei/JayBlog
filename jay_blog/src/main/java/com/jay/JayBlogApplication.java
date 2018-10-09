@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(value = "com.jay.dao")
+@MapperScan(value = "com.jay.modules.user.dao")
 public class JayBlogApplication {
 
     public static void main(String[] args) {

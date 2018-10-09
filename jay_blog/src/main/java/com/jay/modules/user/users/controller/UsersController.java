@@ -1,13 +1,13 @@
-package com.jay.users.controller;
+package com.jay.modules.user.users.controller;
 
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.jay.model.Users;
+import com.jay.modules.user.entity.Users;
 
-import com.jay.param.UserParam;
-import com.jay.users.service.UsersService;
+import com.jay.common.util.UserParam;
+import com.jay.modules.user.users.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

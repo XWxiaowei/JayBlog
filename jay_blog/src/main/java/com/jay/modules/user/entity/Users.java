@@ -1,4 +1,4 @@
-package com.jay.model;
+package com.jay.modules.user.entity;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;

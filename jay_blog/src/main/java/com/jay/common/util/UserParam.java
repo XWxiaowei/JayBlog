@@ -1,4 +1,6 @@
-package com.jay.param;
+package com.jay.common.util;
+
+import com.jay.common.util.PageParam;
 
 public class UserParam extends PageParam {
 

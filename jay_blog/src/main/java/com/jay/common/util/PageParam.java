@@ -1,4 +1,4 @@
-package com.jay.param;
+package com.jay.common.util;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

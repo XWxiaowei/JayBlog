@@ -1,4 +1,4 @@
-package com.jay.exception;
+package com.jay.common.exception;
 
 /**
  * Created by xiang.wei on 2018/9/19
