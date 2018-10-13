@@ -1,9 +1,9 @@
-package com.jay.modules.user.users.service.impl;
+package com.jay.modules.test.users.service.impl;
 
-import com.jay.modules.user.entity.Users;
-import com.jay.modules.user.dao.UsersMapper;
+import com.jay.modules.test.entity.Users;
+import com.jay.modules.test.dao.UsersMapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.jay.modules.user.users.service.UsersService;
+import com.jay.modules.test.users.service.UsersService;
 import org.springframework.stereotype.Service;
 
 /**

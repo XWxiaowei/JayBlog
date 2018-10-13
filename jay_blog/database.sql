@@ -206,11 +206,11 @@ INSERT INTO `shiro_permission` VALUES ('6', '编辑文章', 'post:update', '5', 
 INSERT INTO `shiro_permission` VALUES ('7', '删除文章', 'post:delete', '5', '0', '0');
 INSERT INTO `shiro_permission` VALUES ('8', '评论管理', 'comment:list', '0', '0', '0');
 INSERT INTO `shiro_permission` VALUES ('10', '删除评论', 'comment:delete', '8', '0', '0');
-INSERT INTO `shiro_permission` VALUES ('11', '用户管理', 'user:list', '0', '0', '0');
-INSERT INTO `shiro_permission` VALUES ('12', '用户授权', 'user:role', '11', '0', '0');
-INSERT INTO `shiro_permission` VALUES ('13', '修改密码', 'user:pwd', '11', '0', '0');
-INSERT INTO `shiro_permission` VALUES ('14', '激活用户', 'user:open', '11', '0', '0');
-INSERT INTO `shiro_permission` VALUES ('15', '关闭用户', 'user:close', '11', '0', '0');
+INSERT INTO `shiro_permission` VALUES ('11', '用户管理', 'test:list', '0', '0', '0');
+INSERT INTO `shiro_permission` VALUES ('12', '用户授权', 'test:role', '11', '0', '0');
+INSERT INTO `shiro_permission` VALUES ('13', '修改密码', 'test:pwd', '11', '0', '0');
+INSERT INTO `shiro_permission` VALUES ('14', '激活用户', 'test:open', '11', '0', '0');
+INSERT INTO `shiro_permission` VALUES ('15', '关闭用户', 'test:close', '11', '0', '0');
 INSERT INTO `shiro_permission` VALUES ('16', '角色管理', 'role:list', '0', '0', '0');
 INSERT INTO `shiro_permission` VALUES ('17', '修改角色', 'role:update', '16', '0', '0');
 INSERT INTO `shiro_permission` VALUES ('18', '删除角色', 'role:delete', '16', '0', '0');

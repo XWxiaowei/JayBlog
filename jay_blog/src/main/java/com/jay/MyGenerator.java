@@ -28,12 +28,12 @@ public class MyGenerator {
     public static void main(String[] args) {
 
         //用来获取Mybatis-Plus.properties文件的配置信息
-        ResourceBundle rb =  ResourceBundle.getBundle("Mybatis-Plus");
+        ResourceBundle rb = ResourceBundle.getBundle("Mybatis-Plus");
         AutoGenerator mpg = new AutoGenerator();
-        String systemDir=System.getProperty("user.dir");
+        String systemDir = System.getProperty("test.dir");
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        gc.setOutputDir(systemDir+rb.getString("OutputDir"));
+        gc.setOutputDir(systemDir + rb.getString("OutputDir"));
         gc.setFileOverride(true);
         gc.setActiveRecord(true);
         gc.setEnableCache(false);// XML 二级缓存
@@ -73,16 +73,16 @@ public class MyGenerator {
 //        strategy.setNaming(NamingStrategy.remove_prefix_and_camel);// 表名生成策略
 //        strategy.setNaming(NamingStrategy.removePrefixAndCamel());// 表名生成策略
 //        strategy.setInclude(new String[]{"shop_create_order_record"}); // 需要生成的表
-          strategy.setInclude(new String[] { rb.getString("tableName")}); // 需要生成的表
-//        strategy.setInclude(new String[]{"shop_order_detail"}); // 需要生成的表
-
+        strategy.setInclude(rb.getString("tableName").split(",")); // 需要生成的表
+//        String[] strings = {"mto_users", "shiro_permission"};
+//        strategy.setInclude(strings); // 需要生成的表
 //        strategy.setExclude(new String[]{"t_rong_bid"}); // 排除生成的表
         // 字段名生成策略
         strategy.setNaming(NamingStrategy.underline_to_camel);
         // 自定义实体父类
 //         strategy.setSuperEntityClass("hello.entity.BaseEntity");
         // 自定义实体，公共字段
-        strategy.setSuperEntityColumns(new String[]{"id"});
+//        strategy.setSuperEntityColumns(new String[]{"id"});
         // 自定义 mapper 父类
         // strategy.setSuperMapperClass("com.fcs.demo.TestMapper");
         // 自定义 service 父类
@@ -103,12 +103,12 @@ public class MyGenerator {
         PackageConfig pc = new PackageConfig();
         pc.setParent(rb.getString("parent"));
         pc.setModuleName("");
-        pc.setController(rb.getString("className").toLowerCase()+".controller");// 这里是控制器包名，默认 web
-        pc.setEntity("model");
+        pc.setController("controller");// 这里是控制器包名，默认 web
+        pc.setEntity("entity");
         pc.setMapper("dao");
         pc.setXml("mapper");
-        pc.setService(rb.getString("className")+".service");
-        pc.setServiceImpl(rb.getString("className").toLowerCase()+".service"+".impl");
+        pc.setService("service");
+        pc.setServiceImpl("service" + ".impl");
         mpg.setPackageInfo(pc);
 
         // 执行生成

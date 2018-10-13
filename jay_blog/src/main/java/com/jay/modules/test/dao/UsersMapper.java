@@ -1,6 +1,6 @@
-package com.jay.modules.user.dao;
+package com.jay.modules.test.dao;
 
-import com.jay.modules.user.entity.Users;
+import com.jay.modules.test.entity.Users;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**

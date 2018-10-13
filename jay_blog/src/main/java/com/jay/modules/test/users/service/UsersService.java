@@ -1,6 +1,6 @@
-package com.jay.modules.user.users.service;
+package com.jay.modules.test.users.service;
 
-import com.jay.modules.user.entity.Users;
+import com.jay.modules.test.entity.Users;
 import com.baomidou.mybatisplus.service.IService;
 
 /**
