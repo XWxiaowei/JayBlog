@@ -2,7 +2,10 @@ package com.jay.modules.authc.entity;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
+
 import java.io.Serializable;
 
 /**
@@ -17,7 +20,8 @@ import java.io.Serializable;
 public class ShiroRolePermission extends Model<ShiroRolePermission> {
 
     private static final long serialVersionUID = 1L;
-
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
     /**
      * 权限值id
      */
@@ -49,6 +53,14 @@ public class ShiroRolePermission extends Model<ShiroRolePermission> {
     @Override
     protected Serializable pkVal() {
         return null;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

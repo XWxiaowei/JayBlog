@@ -30,7 +30,7 @@ public class MyGenerator {
         //用来获取Mybatis-Plus.properties文件的配置信息
         ResourceBundle rb = ResourceBundle.getBundle("Mybatis-Plus");
         AutoGenerator mpg = new AutoGenerator();
-        String systemDir = System.getProperty("test.dir");
+        String systemDir = System.getProperty("user.dir");
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         gc.setOutputDir(systemDir + rb.getString("OutputDir"));
@@ -42,11 +42,12 @@ public class MyGenerator {
         gc.setAuthor(rb.getString("author"));
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
-        gc.setMapperName("%sMapper");
-        gc.setXmlName("%sMapper");
-        gc.setServiceName("%sService");
-        gc.setServiceImplName("%sServiceImpl");
-        gc.setControllerName("%sController");
+        String classPrefix = "%s";
+        gc.setMapperName(classPrefix+"Mapper");
+        gc.setXmlName(classPrefix+"Mapper");
+        gc.setServiceName(classPrefix+"Service");
+        gc.setServiceImplName(classPrefix+"ServiceImpl");
+        gc.setControllerName(classPrefix+"Controller");
         mpg.setGlobalConfig(gc);
 
         // 数据源配置

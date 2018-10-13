@@ -9,4 +9,13 @@ public interface Consts {
     // 禁用状态
     int STATUS_CLOSED = 1;
 
+    /**
+     * 未读
+     */
+    int UNREAD = 0;
+
+    /**
+     * 已读
+     */
+    int READED = 1;
 }
