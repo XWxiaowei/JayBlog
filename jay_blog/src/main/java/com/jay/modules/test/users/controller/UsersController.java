@@ -4,6 +4,7 @@ package com.jay.modules.test.users.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.jay.common.exception.RRException;
 import com.jay.modules.test.entity.Users;
 
 import com.jay.common.util.UserParam;
@@ -63,6 +64,15 @@ public class UsersController {
     @RequestMapping(value="update")
     public void update(Users user) {
         usersService.update(user,new EntityWrapper<>());
+    }
+
+    /**
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/exception")
+    public String exception() throws Exception {
+        throw new RRException("this is exception");
     }
 
 }
