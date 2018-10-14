@@ -77,6 +77,8 @@ public class ShiroConfig {
 
 
         /**
+         *
+         *    TODO 待修改
          *    配置shiro拦截器链
          *    过滤的路径
          *   anon 不需要认证
