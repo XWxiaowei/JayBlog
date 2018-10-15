@@ -55,6 +55,6 @@ public class RRExceptionHandler {
     @ExceptionHandler(Exception.class)
     public Data handleException(Exception e){
         logger.error(e.getMessage(), e);
-        return Data.failure("未知错误");
+        return Data.failure(e.getMessage());
     }
 }

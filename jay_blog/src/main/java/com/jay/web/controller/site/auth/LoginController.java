@@ -31,7 +31,7 @@ public class LoginController extends BaseController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String username, String password,
                         @RequestParam(value = "rememberMe", defaultValue = "0") int rememberMe,
                         ModelMap model) {
