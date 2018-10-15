@@ -36,15 +36,15 @@ public class MtoUsersServiceImpl extends ServiceImpl<MtoUsersMapper, MtoUsers> i
         user.setUsername(username);
         user = baseMapper.selectOne(user);
 
-        AccountProfile profile = null;
+        AccountProfile profile = new AccountProfile(user.getId(), user.getUsername());;
         Assert.notNull(user, "账户不存在");
 
-        Assert.state(StringUtils.equals(password, user.getPassword()), "密码错误");
+        Assert.state(!StringUtils.equals(password, user.getPassword()), "密码错误");
 
         user.setLastLogin(new Date());
-        baseMapper.insert(user);
+        baseMapper.updateById(user);
 
-        BeanUtils.copyProperties(user, profile);
+        BeanUtils.copyProperties(user,profile);
 
 //        通知
         BadgesCount badgesCount = new BadgesCount();

@@ -5,7 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(value = "com.jay.modules.*")
+//必须只能扫描mapper接口，不然service层报错
+@MapperScan(value = "com.jay.modules.*.dao")
 public class JayBlogApplication {
 
     public static void main(String[] args) {

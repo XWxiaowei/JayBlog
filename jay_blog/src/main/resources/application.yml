@@ -9,7 +9,8 @@ spring:
     username: root
     password: admin
 #mybatis-plus的配置
+# 此处有坑 单模块加载也需要配置*(classpath 紧挨着的星) 解决自定义SQL无法执行
 mybatis-plus:
-  mapper-locations: classpath:mybatis/mapper/*.xml
+  mapper-locations: classpath*:mybatis/mapper/*Mapper.xml
 
 

@@ -46,14 +46,21 @@ public class RRExceptionHandler {
         logger.error(e.getMessage(), e);
         return Data.failure("数据库中已存在该记录");
     }
+
     @ExceptionHandler(AuthorizationException.class)
-    public Data handleAuthorizationException(AuthorizationException e){
+    public Data handleAuthorizationException(AuthorizationException e) {
         logger.error(e.getMessage(), e);
         return Data.failure("没有权限，请联系管理员授权");
     }
 
     @ExceptionHandler(Exception.class)
-    public Data handleException(Exception e){
+    public Data handleException(Exception e) {
+        logger.error(e.getMessage(), e);
+        return Data.failure(e.getMessage());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public Data handleArgumentException(IllegalArgumentException e) {
         logger.error(e.getMessage(), e);
         return Data.failure(e.getMessage());
     }
