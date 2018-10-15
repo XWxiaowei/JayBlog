@@ -2,6 +2,8 @@ package com.jay.web.controller.site.auth;
 
 import com.jay.web.controller.BaseController;
 import com.jay.web.controller.site.Views;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author xiang.wei
  */
+@Api(value = "登录页",description = "登录页")
 @Controller
 public class LoginController extends BaseController {
     /**
@@ -31,6 +34,7 @@ public class LoginController extends BaseController {
      * @param model
      * @return
      */
+    @ApiOperation(value = "login",notes = "提交登录")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String username, String password,
                         @RequestParam(value = "rememberMe", defaultValue = "0") int rememberMe,
