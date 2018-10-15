@@ -23,7 +23,8 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.jay.modules"))
+                //扫描该包下所有Controller定义的API,并产生文档内容（除了被@ApiIgnore指定的请求）。
+                .apis(RequestHandlerSelectors.basePackage("com.jay.web"))
                 .paths(PathSelectors.any())
                 .build()
                 ;

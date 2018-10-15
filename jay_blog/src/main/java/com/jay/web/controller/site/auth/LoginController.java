@@ -3,6 +3,8 @@ package com.jay.web.controller.site.auth;
 import com.jay.web.controller.BaseController;
 import com.jay.web.controller.site.Views;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
@@ -13,6 +15,7 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,9 +37,13 @@ public class LoginController extends BaseController {
      * @param model
      * @return
      */
-    @ApiOperation(value = "login",notes = "提交登录")
+    @ApiOperation(value = "提交登录",notes = "提交登录")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name ="username" ,value = "用户名",required = true,dataType = "String"),
+            @ApiImplicitParam(name = "password",value = "密码",required = true,dataType = "String")
+    })
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(String username, String password,
+    public String login(String username,String password,
                         @RequestParam(value = "rememberMe", defaultValue = "0") int rememberMe,
                         ModelMap model) {
         String ret = view(Views.LOGIN);
