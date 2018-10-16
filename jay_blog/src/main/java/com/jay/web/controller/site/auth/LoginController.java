@@ -15,7 +15,6 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @author xiang.wei
  */
-@Api(value = "登录页",description = "登录页")
+@Api(description = "登录页")
 @Controller
 public class LoginController extends BaseController {
     /**
@@ -39,8 +38,9 @@ public class LoginController extends BaseController {
      */
     @ApiOperation(value = "提交登录",notes = "提交登录")
     @ApiImplicitParams({
-            @ApiImplicitParam(name ="username" ,value = "用户名",required = true,dataType = "String"),
-            @ApiImplicitParam(name = "password",value = "密码",required = true,dataType = "String")
+            @ApiImplicitParam(name ="username" ,value = "用户名",required = true,dataType = "String",paramType = "query"),
+            @ApiImplicitParam(name ="password",value = "密码",required = true,dataType = "String",paramType = "query"),
+            @ApiImplicitParam(name = "rememberMe", value = "记住登录",  paramType = "query")
     })
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String username,String password,
