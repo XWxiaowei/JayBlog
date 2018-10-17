@@ -14,6 +14,8 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Api(description = "登录页")
 @Controller
 public class LoginController extends BaseController {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     /**
      * 提交登录
      * @param username 用户名
@@ -48,6 +51,7 @@ public class LoginController extends BaseController {
     public String login(String username,String password,
                         @RequestParam(value = "rememberMe", defaultValue = "0") int rememberMe,
                         ModelMap model) {
+        logger.info("登录日志打印");
         String ret = view(Views.LOGIN);
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
             return ret;

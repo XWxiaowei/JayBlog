@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.util.Date;
 
 /**
  * 系统日志切面
@@ -80,6 +81,7 @@ public class SysLogAspect {
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
         mtoLog.setIp(IpUtil.getIpAddr(request));
 
+        mtoLog.setCreateDate(new Date());
         mtoLogService.insert(mtoLog);
     }
 }
