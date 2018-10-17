@@ -256,7 +256,7 @@ INSERT INTO `shiro_role_permission` VALUES ('17', '20', '1');
 INSERT INTO `shiro_role_permission` VALUES ('18', '8', '1');
 INSERT INTO `shiro_role_permission` VALUES ('19', '11', '1');
 
-
+-- 用户角色表
 DROP TABLE IF EXISTS shiro_user_role;
 CREATE TABLE shiro_user_role(
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -265,4 +265,17 @@ CREATE TABLE shiro_user_role(
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT '用户角色表';
 INSERT INTO `shiro_user_role` VALUES ('1', '1', '1');
+-- 系统日志
+DROP TABLE IF EXISTS mto_log;
+CREATE TABLE `mto_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) COMMENT '用户名',
+  `operation` varchar(50) COMMENT '用户操作',
+  `method` varchar(200) COMMENT '请求方法',
+  `params` varchar(5000) COMMENT '请求参数',
+  `time` bigint NOT NULL COMMENT '执行时长(毫秒)',
+  `ip` varchar(64) COMMENT 'IP地址',
+  `create_date` datetime COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='系统日志';
 
