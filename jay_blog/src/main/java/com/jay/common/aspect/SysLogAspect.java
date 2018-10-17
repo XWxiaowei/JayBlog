@@ -4,12 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.jay.common.annotation.SysLog;
 import com.jay.common.util.HttpContextUtils;
 import com.jay.common.util.IpUtil;
-import com.jay.modules.authc.entity.MtoUsers;
 import com.jay.modules.sys.entity.MtoLog;
 import com.jay.modules.sys.service.MtoLogService;
 import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -69,9 +67,8 @@ public class SysLogAspect {
 //        获取方法名
         String methodName = method.getName();
         mtoLog.setMethod(className + "." + methodName + "()");
-        // TODO: 2018/10/17 有问题
 //        获取用户名
-        String username = ((MtoUsers) SecurityUtils.getSubject().getPrincipal()).getUsername();
+        String username = (String) SecurityUtils.getSubject().getPrincipal();
         mtoLog.setUsername(username);
 //       获取参数
         Object[] args = joinPoint.getArgs();

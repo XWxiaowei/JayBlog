@@ -1,5 +1,6 @@
 package com.jay.web.controller.site.auth;
 
+import com.jay.common.annotation.SysLog;
 import com.jay.web.controller.BaseController;
 import com.jay.web.controller.site.Views;
 import io.swagger.annotations.Api;
@@ -42,6 +43,7 @@ public class LoginController extends BaseController {
             @ApiImplicitParam(name ="password",value = "密码",required = true,dataType = "String",paramType = "query"),
             @ApiImplicitParam(name = "rememberMe", value = "记住登录",  paramType = "query")
     })
+    @SysLog("登录接口")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String username,String password,
                         @RequestParam(value = "rememberMe", defaultValue = "0") int rememberMe,
