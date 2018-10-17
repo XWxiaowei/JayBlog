@@ -16,7 +16,7 @@ mybatis-plus:
   #  日志配置
 project: jay_blog
 pattern: "%d{yyyy-MM-dd HH:mm:ss.SSS} |-%-5level [%thread] %c{25} [%L] -| %msg%n"
-path: D:\logs\logback\
+path: jay\log
 logging:
   path: ${path}
   pattern:
